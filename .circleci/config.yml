@@ -1,0 +1,43 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/python:3.11
+        environment:
+          DB_NAME: ${DB_NAME}
+  	  DB_USER: ${DB_USER}
+  	  DB_PASSWORD: ${DB_PASSWORD}
+  	  DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+  	  DEBUG: ${DEBUG}
+
+      - image: cimg/postgres:15.4
+        environment:
+          POSTGRES_DB: mydb
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+
+    working_directory: ~/project
+
+    steps:
+      - checkout
+
+      - setup_remote_docker
+
+      - run:
+          name: Install Docker Compose
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y docker-compose
+
+      - run:
+          name: Build containers
+          command: docker compose build
+
+      - run:
+          name: Run migrations
+          command: docker compose run backend python manage.py migrate
+
+      - run:
+          name: Django check
+          command: docker compose run backend python manage.py check
