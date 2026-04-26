@@ -9,10 +9,6 @@ jobs:
 
     steps:
 
-      - run:
-          name: Check /app content
-          command: ls -la /app
-
       - checkout
 
       - setup_remote_docker
@@ -20,6 +16,10 @@ jobs:
       - run:
           name: Build Docker images
           command: docker compose build
+
+      - run:
+          name: Check /app content
+          command: ls -la /app
 
       - run:
           name: Run Django check
