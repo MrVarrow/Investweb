@@ -10,8 +10,8 @@ jobs:
     steps:
 
       - run:
-    	  name: Check /app content
-    	  command: ls -la /app
+          name: Check /app content
+          command: ls -la /app
 
       - checkout
 
