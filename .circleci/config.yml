@@ -8,6 +8,11 @@ jobs:
     working_directory: ~/project
 
     steps:
+	
+      - run:
+    	  name: Check /app content
+    	  command: ls -la /app
+
       - checkout
 
       - setup_remote_docker
