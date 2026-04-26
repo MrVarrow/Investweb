@@ -18,10 +18,6 @@ jobs:
           command: docker compose build
 
       - run:
-          name: Check /app content
-          command: ls -la /app
-
-      - run:
           name: Run Django check
           command: docker compose run backend python manage.py check
 
