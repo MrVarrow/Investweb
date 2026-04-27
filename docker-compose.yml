@@ -18,6 +18,8 @@ services:
     build: 
       context: ./backend
     working_dir: /app
+    volumes:
+      - ./backend:/app
     restart: always
     environment:
       - DB_NAME=${DB_NAME}
