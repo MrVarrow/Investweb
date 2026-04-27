@@ -1,11 +1,11 @@
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.urls import path
 from django.contrib import admin
 
-def home(request):
-    return HttpResponse("Works!")
+def test_api(request):
+    return JsonResponse({"message": "Hello from Django 🚀"})
 
 urlpatterns = [
-    path('', home),
     path('admin/', admin.site.urls),
+    path('api/test/', test_api),
 ]
