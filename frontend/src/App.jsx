@@ -1,20 +1,16 @@
-import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
 
-function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch("http://localhost:8000/api/test/")
-      .then(res => res.json())
-      .then(data => setData(data));
-  }, []);
-
+export default function App() {
   return (
-    <div>
-      <h1>Frontend działa! </h1>
-      <pre>{JSON.stringify(data)}</pre>
-    </div>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;

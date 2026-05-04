@@ -7,17 +7,17 @@ from .models import UserProfile
 # REGISTER
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
-    age = serializers.IntegerField()
     gender = serializers.CharField()
     first_name = serializers.CharField()
     last_name = serializers.CharField()
+    date_of_birth = serializers.DateField()
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password', 'first_name', 'last_name', 'age', 'gender')
+        fields = ('username', 'email', 'password', 'first_name', 'last_name', 'date_of_birth', 'gender')
 
     def create(self, validated_data):
-        age = validated_data.pop('age')
+        date_of_birth = validated_data.pop('date_of_birth')
         gender = validated_data.pop('gender')
         first_name = validated_data.pop('first_name')
         last_name = validated_data.pop('last_name')
@@ -33,7 +33,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         UserProfile.objects.create(
             user=user,
-            age=age,
+            date_of_birth=date_of_birth,
             gender=gender
         )
 
