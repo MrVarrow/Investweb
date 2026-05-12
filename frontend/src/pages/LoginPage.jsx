@@ -139,7 +139,9 @@ export default function LoginPage() {
         setError(msgs || "Login failed. Please check your credentials.");
       } else {
         setSuccess(data.message || "Logged in successfully!");
-        // navigate("/dashboard");
+        setTimeout(() => {
+          navigate("/dashboard");
+      }, 1000);
       }
     } catch {
       setError("Network error. Make sure your Django server is running.");
