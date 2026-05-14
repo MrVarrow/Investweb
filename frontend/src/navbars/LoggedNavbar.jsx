@@ -101,7 +101,7 @@ function NavItem({ item }) {
  *   import SidebarNav, { DRAWER_WIDTH } from "../components/SidebarNav";
  *   <SidebarNav username="Alex" plan="Free plan" />
  */
-export default function SidebarNav({ username = "User", plan = "Free plan" }) {
+export default function SidebarNav({ username }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -249,7 +249,6 @@ export default function SidebarNav({ username = "User", plan = "Free plan" }) {
               fontFamily: "'DM Sans', sans-serif",
             }}
           >
-            {plan}
           </Typography>
         </Box>
       </Box>

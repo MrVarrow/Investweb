@@ -17,7 +17,7 @@ export default function DashboardPage() {
     <Box sx={{ display: "flex", minHeight: "100vh", bgcolor: "#0f1117" }}>
 
       {/* ── Sidebar (imported, reusable) ── */}
-      <SidebarNav username={username} plan="Free plan" />
+      <SidebarNav username={username} />
 
       {/* ── Main content ── */}
       <Box
@@ -64,7 +64,6 @@ export default function DashboardPage() {
             >
               {username}
             </Box>{" "}
-            👋
           </Typography>
           <Chip
             label="Dashboard"
